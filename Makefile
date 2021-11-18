@@ -1,3 +1,4 @@
+HEADER = libft.h
 NAME = libft.a
 CC = gcc
 FLAGS = -Wall -Wextra -Werror
@@ -6,16 +7,15 @@ BONUS = ft_lstlast.c ft_lstdelone.c ft_lstsize.c ft_lstiter.c ft_lstmap.c ft_lst
 OBJ = $(SRC:.c=.o)
 OBJBONUS = $(BONUS:.c=.o)
 
-
 all: $(NAME)
 
 %.o : %.c
 	$(CC) $(FLAGS) -o $@ -c $<
 
-$(NAME) : $(OBJ) 
+$(NAME) : $(OBJ) $(HEADER)
 	ar rcs $(NAME) $(OBJ)
 
-bonus: $(OBJ) $(OBJBONUS)
+bonus: $(OBJ) $(OBJBONUS) $(HEADER)
 	ar rcs $(NAME) $(OBJ) $(OBJBONUS)
 
 clean:
